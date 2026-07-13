@@ -1,0 +1,13 @@
+# Built-in
+**/jsconfig.json
+**/.eslintrc.json
+
+# OS
+**/.DS_Store
+
+# Local notes (not Salesforce metadata)
+docs/
+PLAN.md
+AGENT.md
+README.md
+scripts/

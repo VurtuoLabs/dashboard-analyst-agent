@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>true</agentDSLEnabled>
+    <agentType>AgentforceEmployeeAgent</agentType>
+    <botMlDomain>
+        <label>Dashboard Analyst</label>
+        <name>Dashboard_Analyst</name>
+    </botMlDomain>
+    <botSource>None</botSource>
+    <description>ユーザーが表示中の Lightning ダッシュボードをネイティブ Apex (Reports API・コールアウト不要) で読み取り、全体傾向・要注意点・推奨アクションを日本語で要約する社内向けエージェント。</description>
+    <label>Dashboard Analyst</label>
+    <logPrivateConversationData>false</logPrivateConversationData>
+    <richContentEnabled>true</richContentEnabled>
+    <sessionTimeout>0</sessionTimeout>
+    <type>InternalCopilot</type>
+</Bot>

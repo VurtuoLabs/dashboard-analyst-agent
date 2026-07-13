@@ -1,0 +1,14 @@
+{
+  "required" : [ "dashboardIdOrUrl" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "dashboardIdOrUrl" : {
+      "title" : "Dashboard URL or ID",
+      "description" : "分析対象の Dashboard Id (01Z で始まる 15/18 桁) または Lightning の URL。ユーザーが現在表示しているダッシュボードのもの。",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

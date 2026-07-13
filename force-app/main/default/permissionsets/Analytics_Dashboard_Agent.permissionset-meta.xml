@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentAccesses>
+        <agentName>Copilot_for_Salesforce</agentName>
+        <enabled>true</enabled>
+    </agentAccesses>
+    <agentAccesses>
+        <agentName>Dashboard_Analyst</agentName>
+        <enabled>true</enabled>
+    </agentAccesses>
+    <description>Permissions for the AI Dashboard Analysis agent — Apex actions and access to the Dashboard Analyst agent in the Agentforce panel.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Analytics Dashboard Agent</label>
+    <classAccesses>
+        <apexClass>AnalyzeAnalyticsAssetAction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AnalyzeDashboardNative</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+</PermissionSet>

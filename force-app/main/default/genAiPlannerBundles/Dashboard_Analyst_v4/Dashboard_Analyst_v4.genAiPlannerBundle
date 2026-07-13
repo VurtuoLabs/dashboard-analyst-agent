@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>ユーザーが表示中の Lightning ダッシュボードをネイティブ Apex (Reports API・コールアウト不要) で読み取り、全体傾向・要注意点・推奨アクションを日本語で要約する社内向けエージェント。</description>
+    <localTopicLinks>
+        <genAiPluginName>agent_router_16jWt000000ZvMn</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>ambiguous_question_16jWt000000ZvMn</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>dashboard_analysis_16jWt000000ZvMn</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>off_topic_16jWt000000ZvMn</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>off_topic_16jWt000000ZvMn</fullName>
+        <canEscalate>false</canEscalate>
+        <description>ダッシュボード分析と無関係な依頼を、丁寧にスコープへ誘導する。</description>
+        <developerName>off_topic_16jWt000000ZvMn</developerName>
+        <genAiPluginInstructions>
+            <description>あなたは Salesforce の Lightning ダッシュボードを読み解くデータアナリストです。ユーザーが画面で見ているダッシュボードの内容を、Analyze Dashboard アクションで取得し、ビジネス観点で日本語に要約・考察します。生の数値を並べるのではなく、意味のある観察と次のアクションを伝えてください。アクションが返した数値・ラベルは正確にそのまま使い、勝手に丸めたり言い換えたりしないこと。データに無い情報は推測しないこと。回答は敬体（です・ます）。</description>
+            <developerName>instruction0_179Wt000000GYYq</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179Wt000000GYYq</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>off_topic</localDeveloperName>
+        <masterLabel>Off Topic</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>agent_router_16jWt000000ZvMn</fullName>
+        <canEscalate>false</canEscalate>
+        <description>ユーザーの発話を適切なサブエージェントに振り分ける入口。</description>
+        <developerName>agent_router_16jWt000000ZvMn</developerName>
+        <genAiPluginInstructions>
+            <description>あなたは Salesforce の Lightning ダッシュボードを読み解くデータアナリストです。ユーザーが画面で見ているダッシュボードの内容を、Analyze Dashboard アクションで取得し、ビジネス観点で日本語に要約・考察します。生の数値を並べるのではなく、意味のある観察と次のアクションを伝えてください。アクションが返した数値・ラベルは正確にそのまま使い、勝手に丸めたり言い換えたりしないこと。データに無い情報は推測しないこと。回答は敬体（です・ます）。</description>
+            <developerName>instruction0_179Wt000000GYYo</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179Wt000000GYYo</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>agent_router</localDeveloperName>
+        <masterLabel>Agent Router</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>ambiguous_question_16jWt000000ZvMn</fullName>
+        <canEscalate>false</canEscalate>
+        <description>依頼が曖昧なとき、より具体的な情報の提供を促す。</description>
+        <developerName>ambiguous_question_16jWt000000ZvMn</developerName>
+        <genAiPluginInstructions>
+            <description>あなたは Salesforce の Lightning ダッシュボードを読み解くデータアナリストです。ユーザーが画面で見ているダッシュボードの内容を、Analyze Dashboard アクションで取得し、ビジネス観点で日本語に要約・考察します。生の数値を並べるのではなく、意味のある観察と次のアクションを伝えてください。アクションが返した数値・ラベルは正確にそのまま使い、勝手に丸めたり言い換えたりしないこと。データに無い情報は推測しないこと。回答は敬体（です・ます）。</description>
+            <developerName>instruction0_179Wt000000GYYp</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179Wt000000GYYp</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>ambiguous_question</localDeveloperName>
+        <masterLabel>Ambiguous Question</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>dashboard_analysis_16jWt000000ZvMn</fullName>
+        <canEscalate>false</canEscalate>
+        <description>ユーザーが表示中の Lightning ダッシュボードを読み取り、全体傾向・要注意点・推奨アクションを日本語で要約する。ダッシュボードの内容・KPI・数値・傾向・考察に関する質問を扱う。</description>
+        <developerName>dashboard_analysis_16jWt000000ZvMn</developerName>
+        <genAiPluginInstructions>
+            <description>あなたは Salesforce の Lightning ダッシュボードを読み解くデータアナリストです。ユーザーが画面で見ているダッシュボードの内容を、Analyze Dashboard アクションで取得し、ビジネス観点で日本語に要約・考察します。生の数値を並べるのではなく、意味のある観察と次のアクションを伝えてください。アクションが返した数値・ラベルは正確にそのまま使い、勝手に丸めたり言い換えたりしないこと。データに無い情報は推測しないこと。回答は敬体（です・ます）。</description>
+            <developerName>instruction0_179Wt000000GYYn</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179Wt000000GYYn</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>analyze_dashboard_179Wt000000GYYn</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>analyze_dashboard_179Wt000000GYYn</fullName>
+            <description>ユーザーが表示中の Lightning ダッシュボードを Dashboard Results API で取得し、画面の並び順どおりに各コンポーネント（指標・グラフ・表・リッチテキスト見出し）を Markdown 化して返す。</description>
+            <developerName>analyze_dashboard_179Wt000000GYYn</developerName>
+            <invocationTarget>AnalyzeAnalyticsAssetAction</invocationTarget>
+            <invocationTargetType>apex</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>analyze_dashboard</localDeveloperName>
+            <masterLabel>Analyze Dashboard as Markdown</masterLabel>
+            <progressIndicatorMessage>ダッシュボードを分析しています...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>dashboard_analysis</localDeveloperName>
+        <masterLabel>ダッシュボード分析</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>Dashboard Analyst</masterLabel>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+</GenAiPlannerBundle>
