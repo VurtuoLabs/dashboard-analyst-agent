@@ -169,7 +169,7 @@ This is a single-team internal project; there's no formal contribution process. 
 
 ## License
 
-MIT License, see [LICENSE](LICENSE).
+[MIT](LICENSE) © 2026 VurtuoLabs
 
 ## Further reading
 
