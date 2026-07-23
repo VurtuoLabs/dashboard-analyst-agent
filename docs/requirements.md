@@ -1,4 +1,4 @@
-# Requirements — Analytics × Agentforce "AI Dashboard Analysis"
+# Requirements, Analytics × Agentforce "AI Dashboard Analysis"
 
 Reference: Slack Canvas `F0AVAP1BMTP` (Build guide for "AI Dashboard Analysis" powered by the Analytics API × Agentforce)
 

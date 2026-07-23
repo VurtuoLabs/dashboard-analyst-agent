@@ -1,5 +1,5 @@
 /**
- * Invocable Apex action for Agentforce — NATIVE, callout-free dashboard analysis.
+ * Invocable Apex action for Agentforce, NATIVE, callout-free dashboard analysis.
  *
  * Unlike AnalyzeAnalyticsAssetAction (which calls the Analytics REST API through
  * a Named Credential / OAuth self-callout), this class uses ONLY native Apex:
@@ -227,7 +227,7 @@ public with sharing class AnalyzeDashboardNative {
         return String.isBlank(s) ? '(none)' : s;
     }
 
-    /** Lightweight StringBuilder — Apex has none natively. */
+    /** Lightweight StringBuilder, Apex has none natively. */
     private class StringBuilder {
         private List<String> parts = new List<String>();
         public StringBuilder add(String s) {

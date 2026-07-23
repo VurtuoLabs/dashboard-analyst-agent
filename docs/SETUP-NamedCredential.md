@@ -61,7 +61,7 @@ Save → login/authorization screen → **click "Allow"** → success once the *
 ## ❗ Troubleshooting: if you get `redirect_uri_mismatch`
 - Almost every cause is a timing issue where "the app save from step ④ hasn't propagated yet."
 - If the configuration is correct (the callback URL ends with `/Self_Auth`), **wait 2-3 minutes**, then go back to
-  the edit screen from step ⑤, re-check "Start Authentication Flow on Save," and **save again** — this should resolve it.
+  the edit screen from step ⑤, re-check "Start Authentication Flow on Save," and **save again**, this should resolve it.
 - If it still doesn't work, disable your browser's popup blocker and try again.
 
 ## ✅ Verification (proven working in this org)

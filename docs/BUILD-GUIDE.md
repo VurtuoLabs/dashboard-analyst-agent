@@ -1,4 +1,4 @@
-# BUILD GUIDE — Agentforce × Dashboard Analysis Agent
+# BUILD GUIDE, Agentforce × Dashboard Analysis Agent
 
 When a user has a Lightning dashboard open and says "Analyze this dashboard,"
 the agent reads the contents and returns an **Overview / Key KPIs / Trends & Notable Patterns / Recommended Actions** summary in English.
@@ -18,9 +18,9 @@ After investigation and verification on the org, it turned out this could be **c
 
 | Approach | Manual setup | Adopted |
 |---|---|---|
-| (a) Named Credential + OAuth self-callout | Requires External Credential, Auth Provider, browser Allow | No — old version |
+| (a) Named Credential + OAuth self-callout | Requires External Credential, Auth Provider, browser Allow | No, old version |
 | (b) session-id self-callout + Remote Site | Requires Remote Site + unstable because `getSessionId()` becomes null asynchronously | No |
-| **(c) Native `Reports.ReportManager`** | **None** (no callouts, no Named Credential) | Yes — **adopted** |
+| **(c) Native `Reports.ReportManager`** | **None** (no callouts, no Named Credential) | Yes, **adopted** |
 
 **Verification log (anonymous Apex execution on the org)**:
 ```
@@ -112,7 +112,7 @@ sf org assign permset --target-org <alias> --name Analytics_Dashboard_Agent
 
 ---
 
-## 4. Displaying it on screen (enabling the panel) — CLI-automated + remaining manual steps
+## 4. Displaying it on screen (enabling the panel), CLI-automated + remaining manual steps
 
 ### Key prerequisites (the correct mechanism revealed by investigation)
 - The Agentforce assistant is opened via the **icon in the top-right of the Lightning header (global)**.
@@ -140,7 +140,7 @@ sf org assign permset --target-org <alias> --name Analytics_Dashboard_Agent
 > ⚠️ `Copilot_for_Salesforce` "cannot have its activation status changed because it is the default agent" (`sf agent activate` is not possible for it).
 > Once the panel feature is enabled, this slot automatically becomes usable.
 
-### 🖐 Remaining manual steps (UI required) — check after a browser reload
+### 🖐 Remaining manual steps (UI required), check after a browser reload
 
 **STEP A. Check whether the icon appears in the header**
 - Log in as the target user → **hard reload** the browser.
@@ -164,22 +164,22 @@ The panel displays the default slot `Copilot_for_Salesforce`. There are two ways
 ### 🚨 If the panel shows "Something went wrong. Refresh the conversation"
 This is a symptom where the panel UI (Astro + "Let's chat!") appears, but session initialization fails. Causes and remedies (investigated and verified):
 
-1. **[Most likely — UI required] Metadata activation alone may not trigger server-side provisioning in the Setup UI.**
+1. **[Most likely, UI required] Metadata activation alone may not trigger server-side provisioning in the Setup UI.**
    - Under [Setup] > **Einstein Setup (Einstein Setup / Generative AI)**, check "**Turn on Einstein**." Even if it's On, toggle it Off → Save → On again to re-trigger provisioning.
    - Turn on the "**Turn on Agentforce**" toggle at the top of the [Setup] > **Agentforce Agents** page.
      Note: the default agent `Copilot_for_Salesforce` has no individual activate action (`sf agent activate` is not possible), so **this org-level toggle is effectively the "activation" itself**.
-   - If the "Agentforce Agents" node doesn't appear in Setup, generative AI is not yet enabled — redo the Einstein steps above.
+   - If the "Agentforce Agents" node doesn't appear in Setup, generative AI is not yet enabled, redo the Einstein steps above.
 2. **[Session cache]** Since permissions were granted after login, log out and log back in once **(or fully restart the browser)** before opening the panel.
 3. **[Provisioning delay]** Especially for trial/demo orgs, this error can appear for a few minutes right after activation. **Wait 5–15 minutes and retry**.
 4. **[Enabled Agent Access]** → Already linked via CLI (`agentAccesses`) in this repo. To confirm via the UI,
    check [Setup] > Permission Sets > the relevant set > whether `Agentforce (Default)` is listed under "**Enabled Agent Access**."
 
 > Summary: **All the enablement, permissions, and linkage that can be done via CLI have been completed**. The remaining possibilities are
-> **(1) the Setup UI's "Turn on Agentforce" toggle, (2) re-login, (3) waiting for provisioning** — all three are UI/timing factors.
+> **(1) the Setup UI's "Turn on Agentforce" toggle, (2) re-login, (3) waiting for provisioning**, all three are UI/timing factors.
 
 ---
 
-## 5. The mechanism for "recognizing the dashboard on screen" (important — verification results)
+## 5. The mechanism for "recognizing the dashboard on screen" (important, verification results)
 
 The ideal experience is "automatically analyze the currently open dashboard without pasting a URL." Here is the **conclusion verified on a real environment**:
 
@@ -202,7 +202,7 @@ The ideal experience is "automatically analyze the currently open dashboard with
 
 > Real-environment log: "Analyze My forecast" → URL guidance / URL pasted → read "Enablement Dashboard" and responded with all 4 sections (callout 0).
 
-### If "auto-recognition without a URL" is implemented in the future (not yet implemented — options)
+### If "auto-recognition without a URL" is implemented in the future (not yet implemented, options)
 - Build a **custom LWC panel** (utility bar) that reads the current page id via `@api recordId` / `pageReference`,
   and passes it as a **custom context variable (visibility External)** when starting a session via the Agent API. This does not depend on the standard panel's auto-injection.
 - If the experience is changed to **assume a record page**, using `@context.currentRecordId` (valid only on record pages) is an option,
@@ -220,13 +220,13 @@ The ideal experience is "automatically analyze the currently open dashboard with
 
 ---
 
-## 7. Enabling the Slack canvas approach (real Apex) — Named Credential
+## 7. Enabling the Slack canvas approach (real Apex), Named Credential
 
 The current backing `AnalyzeAnalyticsAssetAction` (the real canvas implementation)'s `dashboardIdOrUrl` path
 calls your org's own Dashboard Results API via the **Named Credential `Salesforce_API`**. Without it,
 the agent politely returns an error saying "named credential 'Salesforce_API' might not exist" (confirmed on a real environment).
 
-### 🖐 Manual steps (UI required — only the OAuth "Allow" click cannot be automated)
+### 🖐 Manual steps (UI required, only the OAuth "Allow" click cannot be automated)
 As described in canvas §1. The shortest path:
 1. Create an **External Client App** (or Connected App) and enable OAuth, with scope = `api refresh_token offline_access`, and note the Consumer Key/Secret.
 2. Create an **Auth Provider** (Salesforce type) named `Self_Auth`. **Set Default Scopes to `api refresh_token`, space-separated** (missing this causes invalid_scope). Note the Callback URL.
@@ -243,9 +243,9 @@ As described in canvas §1. The shortest path:
   it was able to convert the real dashboard "Enablement Dashboard" (12 components) into Markdown **in the exact order of the screen's headings** (confirmed callouts: 0).
 - In other words, as long as a "path for passing in JSON" is provided, canvas-quality output is achievable even without a Named Credential.
 
-### Alternative approaches (no Named Credential needed — both close to zero setup)
+### Alternative approaches (no Named Credential needed, both close to zero setup)
 - **A. `rawPayloadJson` + custom LWC panel**: an LWC reads the currently displayed dashboard id via `@api recordId` etc.,
-  fetches the Dashboard Results JSON, and passes it into `rawPayloadJson`. This achieves both goals of canvas —**no OAuth needed + automatic on-screen id capture** (not yet implemented — next step).
+  fetches the Dashboard Results JSON, and passes it into `rawPayloadJson`. This achieves both goals of canvas, **no OAuth needed + automatic on-screen id capture** (not yet implemented, next step).
 - **B. `AnalyzeDashboardNative` (Reports API)**: simply set the agent's `target:` back to `apex://AnalyzeDashboardNative`.
   No Named Credential or Remote Site needed, works immediately, but it's a simplified version that doesn't reproduce the screen's layout order or chart types.
 

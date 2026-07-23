@@ -20,10 +20,10 @@ A project deployed to a Salesforce org that implements "automated Lightning Dash
 - Details: [docs/BUILD-GUIDE.md](docs/BUILD-GUIDE.md), [docs/Dashboard_Analyst-AgentSpec.md](docs/Dashboard_Analyst-AgentSpec.md).
 
 ## Directory structure
-- `force-app/main/default/classes/` — Apex actions and tests
-- `force-app/main/default/permissionsets/` — permissions required for operation
-- `force-app/main/default/aiAuthoringBundles/Dashboard_Analyst/` — **the agent itself (.agent / Agent Script)**
-- `docs/` — design spec, build guide, requirements, architecture
+- `force-app/main/default/classes/`, Apex actions and tests
+- `force-app/main/default/permissionsets/`, permissions required for operation
+- `force-app/main/default/aiAuthoringBundles/Dashboard_Analyst/`, **the agent itself (.agent / Agent Script)**
+- `docs/`, design spec, build guide, requirements, architecture
 
 ## Agent / development rules (Context Engineering compliant)
 - **Just-in-time**: Large factMaps are truncated on the Apex side to **MAX_REPORTS=25 / MAX_GROUPINGS_PER_REPORT=12** before being passed to the model.

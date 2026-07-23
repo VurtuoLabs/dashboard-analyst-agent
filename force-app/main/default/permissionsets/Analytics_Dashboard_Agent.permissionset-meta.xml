@@ -8,7 +8,7 @@
         <agentName>Dashboard_Analyst</agentName>
         <enabled>true</enabled>
     </agentAccesses>
-    <description>Permissions for the AI Dashboard Analysis agent — Apex actions and access to the Dashboard Analyst agent in the Agentforce panel.</description>
+    <description>Permissions for the AI Dashboard Analysis agent, Apex actions and access to the Dashboard Analyst agent in the Agentforce panel.</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Analytics Dashboard Agent</label>
     <classAccesses>

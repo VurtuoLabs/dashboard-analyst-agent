@@ -1,4 +1,4 @@
-# Agent Spec — Dashboard Analyst
+# Agent Spec, Dashboard Analyst
 
 > An **internal (Employee)** agent built with the new builder (Agent Script / AiAuthoringBundle).
 > It reads the Lightning dashboard currently displayed to the user via **native Apex (Reports API, no callout required)** and summarizes and analyzes it in English.
@@ -10,11 +10,11 @@
 
 ## 2. Configuration
 - **Agent type**: `AgentforceEmployeeAgent` (internal use)
-- **default_agent_user**: N/A — not set, since this is an Employee Agent (setting it causes publish/preview to fail)
+- **default_agent_user**: N/A, not set, since this is an Employee Agent (setting it causes publish/preview to fail)
 - **default_locale**: `ja`
 - **Permissions**: PermissionSet `Analytics_Dashboard_Agent` (grants access to Apex `AnalyzeDashboardNative`)
 - **Bundle**: `force-app/main/default/aiAuthoringBundles/Dashboard_Analyst/`
-- **Status**: Published to org `<YOUR_ORG_ID>` — **v1 Active**
+- **Status**: Published to org `<YOUR_ORG_ID>`, **v1 Active**
 
 ## 3. Subagent Map
 
@@ -36,7 +36,7 @@ All transitions are **handoffs** (`@utils.transition to`). There is no delegatio
 ## 4. Actions & Backing Logic
 
 ### `analyze_dashboard`
-- **Backing**: Apex `AnalyzeDashboardNative` (invocable, `with sharing`) — **IMPLEMENTED & DEPLOYED**
+- **Backing**: Apex `AnalyzeDashboardNative` (invocable, `with sharing`), **IMPLEMENTED & DEPLOYED**
 - **Target**: `apex://AnalyzeDashboardNative`
 - **Approach**: Queries `Dashboard` / `DashboardComponent` via SOQL → runs each report with `Reports.ReportManager.runReport(reportId, false)` → extracts the Total and groupings from the factMap and formats them as markdown. **0 HTTP callouts / no Named Credential required** (verified on the org: `Number of callouts: 0`).
 - **Inputs**:
