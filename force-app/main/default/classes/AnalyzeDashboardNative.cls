@@ -84,6 +84,7 @@ public with sharing class AnalyzeDashboardNative {
                 SELECT Id, Title, DeveloperName, FolderName
                 FROM Dashboard
                 WHERE Id = :dashId
+                WITH USER_MODE
                 LIMIT 1
             ];
             if (dashes.isEmpty()) {
@@ -98,6 +99,7 @@ public with sharing class AnalyzeDashboardNative {
                 SELECT Id, Name, CustomReportId
                 FROM DashboardComponent
                 WHERE DashboardId = :dashId AND CustomReportId != NULL
+                WITH USER_MODE
             ];
             res.componentCount = comps.size();
 
@@ -113,7 +115,9 @@ public with sharing class AnalyzeDashboardNative {
             // 3) Report names
             Map<Id, Report> reportById = new Map<Id, Report>();
             if (!orderedReportIds.isEmpty()) {
-                for (Report r : [SELECT Id, Name FROM Report WHERE Id IN :orderedReportIds]) {
+                for (Report r : [
+                    SELECT Id, Name FROM Report WHERE Id IN :orderedReportIds WITH USER_MODE
+                ]) {
                     reportById.put(r.Id, r);
                 }
             }
